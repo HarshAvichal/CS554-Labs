@@ -6,6 +6,7 @@ import Artists from './pages/Artists.jsx';
 import ArtistDetail from './pages/ArtistDetail.jsx';
 import Albums from './pages/Albums.jsx';
 import AlbumDetail from './pages/AlbumDetail.jsx';
+import Listeners from './pages/Listeners.jsx';
 import './App.css';
 
 export default function App() {
@@ -17,7 +18,7 @@ export default function App() {
         <Route path="/artists/:id" element={<ArtistDetail />} />
         <Route path="/albums" element={<Albums />} />
         <Route path="/albums/:id" element={<AlbumDetail />} />
-        <Route path="/listeners" element={<Placeholder title="Listeners" />} />
+        <Route path="/listeners" element={<Listeners />} />
         <Route path="/listeners/:id" element={<Placeholder title="Listener" />} />
         <Route path="*" element={<Placeholder title="Not found" />} />
       </Route>

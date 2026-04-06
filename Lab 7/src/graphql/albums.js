@@ -99,3 +99,55 @@ export const REMOVE_ALBUM = gql`
     }
   }
 `;
+
+const LISTENER_LINK_FIELDS = gql`
+  fragment ListenerLinkFields on Listener {
+    _id
+    first_name
+    last_name
+  }
+`;
+
+export const GET_ALBUM_BY_ID = gql`
+  query GetAlbumById($_id: String!) {
+    getAlbumById(_id: $_id) {
+      _id
+      title
+      genre
+      track_count
+      release_date
+      promo_start
+      promo_end
+      artist {
+        _id
+        stage_name
+      }
+      listenersWhoFavorited {
+        ...ListenerLinkFields
+      }
+      numOfListenersWhoFavorited
+    }
+  }
+  ${LISTENER_LINK_FIELDS}
+`;
+
+export const GET_LISTENERS_BY_ALBUM_ID = gql`
+  query GetListenersByAlbumId($albumId: String!) {
+    getListenersByAlbumId(albumId: $albumId) {
+      ...ListenerLinkFields
+    }
+  }
+  ${LISTENER_LINK_FIELDS}
+`;
+
+export const UPDATE_ALBUM_ARTIST = gql`
+  mutation UpdateAlbumArtist($albumId: String!, $artistId: String!) {
+    updateAlbumArtist(albumId: $albumId, artistId: $artistId) {
+      _id
+      artist {
+        _id
+        stage_name
+      }
+    }
+  }
+`;

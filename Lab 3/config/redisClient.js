@@ -4,7 +4,13 @@ let client = null;
 
 export const initRedis = async () => {
   try {
-    client = createClient();
+    client = createClient({
+      socket: {
+        // If Redis isn’t running, fail fast so GraphQL can still bind to :4000
+        connectTimeout: 2_000,
+        reconnectStrategy: false,
+      },
+    });
     client.on('error', () => {});
     await client.connect();
     console.log('Connected to Redis');

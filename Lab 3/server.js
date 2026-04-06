@@ -10,6 +10,8 @@ await initRedis();
 
 const server = new ApolloServer({ typeDefs, resolvers });
 
+console.log('Starting GraphQL on port 4000…');
+
 const { url } = await startStandaloneServer(server, {
   listen: { port: 4000 },
   // Lab 7 (Vite) runs on another origin; browsers block fetch without CORS.

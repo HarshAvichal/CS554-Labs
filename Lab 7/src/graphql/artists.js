@@ -96,3 +96,41 @@ export const REMOVE_ARTIST = gql`
     }
   }
 `;
+
+const ALBUM_CARD_FIELDS = gql`
+  fragment AlbumCardFields on Album {
+    _id
+    title
+    genre
+    track_count
+  }
+`;
+
+export const GET_ARTIST_BY_ID = gql`
+  query GetArtistById($_id: String!) {
+    getArtistById(_id: $_id) {
+      _id
+      stage_name
+      genre
+      label
+      management_email
+      management_phone
+      home_city
+      date_signed
+      numOfAlbums
+      albums {
+        ...AlbumCardFields
+      }
+    }
+  }
+  ${ALBUM_CARD_FIELDS}
+`;
+
+export const GET_ALBUMS_BY_ARTIST_ID = gql`
+  query GetAlbumsByArtistId($artistId: String!) {
+    getAlbumsByArtistId(artistId: $artistId) {
+      ...AlbumCardFields
+    }
+  }
+  ${ALBUM_CARD_FIELDS}
+`;

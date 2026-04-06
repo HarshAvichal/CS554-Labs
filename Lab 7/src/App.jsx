@@ -3,6 +3,7 @@ import AppLayout from './components/AppLayout.jsx';
 import Home from './pages/Home.jsx';
 import Placeholder from './pages/Placeholder.jsx';
 import Artists from './pages/Artists.jsx';
+import ArtistDetail from './pages/ArtistDetail.jsx';
 import './App.css';
 
 export default function App() {
@@ -11,7 +12,7 @@ export default function App() {
       <Route element={<AppLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/artists" element={<Artists />} />
-        <Route path="/artists/:id" element={<Placeholder title="Artist" />} />
+        <Route path="/artists/:id" element={<ArtistDetail />} />
         <Route path="/albums" element={<Placeholder title="Albums" />} />
         <Route path="/albums/:id" element={<Placeholder title="Album" />} />
         <Route path="/listeners" element={<Placeholder title="Listeners" />} />

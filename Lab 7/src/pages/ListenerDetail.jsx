@@ -3,6 +3,7 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useMutation, useQuery } from '@apollo/client/react';
 import {
   GET_LISTENER_BY_ID,
+  LISTENERS_QUERY,
   EDIT_LISTENER,
   REMOVE_LISTENER,
   FAVORITE_ALBUM,
@@ -10,6 +11,10 @@ import {
 } from '../graphql/listeners.js';
 import { ALBUMS_QUERY } from '../graphql/albums.js';
 import { formatGraphQLError } from '../utils/graphqlErrors.js';
+import {
+  afterEntityDeletedMutationOpts,
+  defaultMutationOpts,
+} from '../apollo/mutationOptions.js';
 import Modal from '../components/Modal.jsx';
 import ListenerForm from '../components/ListenerForm.jsx';
 
@@ -48,15 +53,26 @@ export default function ListenerDetail() {
   const [pickAlbumId, setPickAlbumId] = useState('');
   const [pickError, setPickError] = useState('');
 
-  const mutationOpts = {
-    awaitRefetchQueries: true,
-    refetchQueries: 'active',
-  };
+  const [editListener, editState] = useMutation(EDIT_LISTENER, defaultMutationOpts);
+  const [removeListener, removeState] = useMutation(
+    REMOVE_LISTENER,
+    afterEntityDeletedMutationOpts
+  );
 
-  const [editListener, editState] = useMutation(EDIT_LISTENER, mutationOpts);
-  const [removeListener, removeState] = useMutation(REMOVE_LISTENER, mutationOpts);
-  const [favoriteAlbum, favoriteState] = useMutation(FAVORITE_ALBUM, mutationOpts);
-  const [unfavoriteAlbum, unfavoriteState] = useMutation(UNFAVORITE_ALBUM, mutationOpts);
+  const favoriteMutationOpts = useMemo(
+    () => ({
+      awaitRefetchQueries: true,
+      refetchQueries: [
+        LISTENERS_QUERY,
+        ALBUMS_QUERY,
+        { query: GET_LISTENER_BY_ID, variables: { _id: id } },
+      ],
+    }),
+    [id]
+  );
+
+  const [favoriteAlbum, favoriteState] = useMutation(FAVORITE_ALBUM, favoriteMutationOpts);
+  const [unfavoriteAlbum, unfavoriteState] = useMutation(UNFAVORITE_ALBUM, favoriteMutationOpts);
 
   const listenerQ = useQuery(GET_LISTENER_BY_ID, {
     variables: { _id: id },

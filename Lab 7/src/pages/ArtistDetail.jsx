@@ -8,6 +8,10 @@ import {
   REMOVE_ARTIST,
 } from '../graphql/artists.js';
 import { formatGraphQLError } from '../utils/graphqlErrors.js';
+import {
+  afterEntityDeletedMutationOpts,
+  defaultMutationOpts,
+} from '../apollo/mutationOptions.js';
 import Modal from '../components/Modal.jsx';
 import ArtistForm from '../components/ArtistForm.jsx';
 
@@ -40,15 +44,11 @@ export default function ArtistDetail() {
   const [formNonce, setFormNonce] = useState(0);
   const [formError, setFormError] = useState('');
 
-  const mutationOpts = {
-    awaitRefetchQueries: true,
-    refetchQueries: 'active',
-  };
-
-  const [editArtist, editState] = useMutation(EDIT_ARTIST, mutationOpts);
-  const [removeArtist, removeState] = useMutation(REMOVE_ARTIST, {
-    ...mutationOpts,
-  });
+  const [editArtist, editState] = useMutation(EDIT_ARTIST, defaultMutationOpts);
+  const [removeArtist, removeState] = useMutation(
+    REMOVE_ARTIST,
+    afterEntityDeletedMutationOpts
+  );
 
   const artistQ = useQuery(GET_ARTIST_BY_ID, {
     variables: { _id: id },

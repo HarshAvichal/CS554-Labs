@@ -3,16 +3,17 @@ export default function Home() {
     <article className="page prose">
       <h1>Music Library</h1>
       <p>
-        This app is the front end for a small music catalog: artists, their
-        albums, and listeners who can favorite releases. It talks to the CS
-        554 GraphQL API (Lab 3) through Apollo Client so lists, detail pages,
-        filters, and edits stay in sync with the server.
+        <strong>Purpose:</strong> This site is the CS-554 <strong>Lab 7</strong> client for your music
+        library. It is a React single-page app that uses <strong>Apollo Client</strong> and{' '}
+        <strong>GraphQL</strong> to talk to the Lab 3 API (MongoDB with Redis caching on the server).
+        You can browse and maintain artists, albums, and listeners—including who has favorited which
+        album—without dumping raw JSON; everything is shown in tables, detail screens, and modals.
       </p>
       <p>
-        Use the navigation to browse <strong>Artists</strong>,{' '}
-        <strong>Albums</strong>, and <strong>Listeners</strong>, open a record
-        for full detail, and manage data with the forms provided on each
-        section.
+        Use the header links to open <strong>Artists</strong>, <strong>Albums</strong>, or{' '}
+        <strong>Listeners</strong>. Each area supports the required filters, links between related
+        records, and add / edit / delete actions that honor the same validation rules as the GraphQL
+        server.
       </p>
     </article>
   );

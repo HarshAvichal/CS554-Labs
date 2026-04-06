@@ -12,6 +12,10 @@ import {
 import { ARTISTS_QUERY } from '../graphql/artists.js';
 import { DEFAULT_PERIOD_START } from '../constants/dates.js';
 import { formatGraphQLError } from '../utils/graphqlErrors.js';
+import {
+  afterEntityDeletedMutationOpts,
+  defaultMutationOpts,
+} from '../apollo/mutationOptions.js';
 import Modal from '../components/Modal.jsx';
 import AlbumForm from '../components/AlbumForm.jsx';
 
@@ -45,14 +49,9 @@ export default function Albums() {
 
   const artistsQ = useQuery(ARTISTS_QUERY, { skip: !modal });
 
-  const mutationOpts = {
-    awaitRefetchQueries: true,
-    refetchQueries: 'active',
-  };
-
-  const [addAlbum, addState] = useMutation(ADD_ALBUM, mutationOpts);
-  const [editAlbum, editState] = useMutation(EDIT_ALBUM, mutationOpts);
-  const [removeAlbum, removeState] = useMutation(REMOVE_ALBUM, mutationOpts);
+  const [addAlbum, addState] = useMutation(ADD_ALBUM, defaultMutationOpts);
+  const [editAlbum, editState] = useMutation(EDIT_ALBUM, defaultMutationOpts);
+  const [removeAlbum, removeState] = useMutation(REMOVE_ALBUM, afterEntityDeletedMutationOpts);
 
   const { rows, loading, listError } = useMemo(() => {
     if (view.type === 'all') {

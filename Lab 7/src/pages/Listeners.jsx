@@ -10,6 +10,10 @@ import {
   REMOVE_LISTENER,
 } from '../graphql/listeners.js';
 import { formatGraphQLError } from '../utils/graphqlErrors.js';
+import {
+  afterEntityDeletedMutationOpts,
+  defaultMutationOpts,
+} from '../apollo/mutationOptions.js';
 import Modal from '../components/Modal.jsx';
 import ListenerForm from '../components/ListenerForm.jsx';
 
@@ -38,14 +42,12 @@ export default function Listeners() {
     variables: { searchTerm: view.searchTerm ?? '' },
   });
 
-  const mutationOpts = {
-    awaitRefetchQueries: true,
-    refetchQueries: 'active',
-  };
-
-  const [addListener, addState] = useMutation(ADD_LISTENER, mutationOpts);
-  const [editListener, editState] = useMutation(EDIT_LISTENER, mutationOpts);
-  const [removeListener, removeState] = useMutation(REMOVE_LISTENER, mutationOpts);
+  const [addListener, addState] = useMutation(ADD_LISTENER, defaultMutationOpts);
+  const [editListener, editState] = useMutation(EDIT_LISTENER, defaultMutationOpts);
+  const [removeListener, removeState] = useMutation(
+    REMOVE_LISTENER,
+    afterEntityDeletedMutationOpts
+  );
 
   const { rows, loading, listError } = useMemo(() => {
     if (view.type === 'all') {

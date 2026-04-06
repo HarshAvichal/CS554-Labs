@@ -10,6 +10,10 @@ import {
 } from '../graphql/albums.js';
 import { ARTISTS_QUERY } from '../graphql/artists.js';
 import { formatGraphQLError } from '../utils/graphqlErrors.js';
+import {
+  afterEntityDeletedMutationOpts,
+  defaultMutationOpts,
+} from '../apollo/mutationOptions.js';
 import Modal from '../components/Modal.jsx';
 import AlbumForm from '../components/AlbumForm.jsx';
 
@@ -40,14 +44,12 @@ export default function AlbumDetail() {
   const [artistPick, setArtistPick] = useState('');
   const [artistModalError, setArtistModalError] = useState('');
 
-  const mutationOpts = {
-    awaitRefetchQueries: true,
-    refetchQueries: 'active',
-  };
-
-  const [editAlbum, editState] = useMutation(EDIT_ALBUM, mutationOpts);
-  const [removeAlbum, removeState] = useMutation(REMOVE_ALBUM, mutationOpts);
-  const [updateAlbumArtist, updateArtistState] = useMutation(UPDATE_ALBUM_ARTIST, mutationOpts);
+  const [editAlbum, editState] = useMutation(EDIT_ALBUM, defaultMutationOpts);
+  const [removeAlbum, removeState] = useMutation(REMOVE_ALBUM, afterEntityDeletedMutationOpts);
+  const [updateAlbumArtist, updateArtistState] = useMutation(
+    UPDATE_ALBUM_ARTIST,
+    defaultMutationOpts
+  );
 
   const albumQ = useQuery(GET_ALBUM_BY_ID, {
     variables: { _id: id },

@@ -90,3 +90,46 @@ export const REMOVE_LISTENER = gql`
     }
   }
 `;
+
+const FAVORITE_ALBUM_CARD = gql`
+  fragment FavoriteAlbumCard on Album {
+    _id
+    title
+    genre
+    track_count
+  }
+`;
+
+export const GET_LISTENER_BY_ID = gql`
+  query GetListenerById($_id: String!) {
+    getListenerById(_id: $_id) {
+      _id
+      first_name
+      last_name
+      email
+      date_of_birth
+      subscription_tier
+      numOfFavoriteAlbums
+      favorite_albums {
+        ...FavoriteAlbumCard
+      }
+    }
+  }
+  ${FAVORITE_ALBUM_CARD}
+`;
+
+export const FAVORITE_ALBUM = gql`
+  mutation FavoriteAlbum($listenerId: String!, $albumId: String!) {
+    favoriteAlbum(listenerId: $listenerId, albumId: $albumId) {
+      _id
+    }
+  }
+`;
+
+export const UNFAVORITE_ALBUM = gql`
+  mutation UnfavoriteAlbum($listenerId: String!, $albumId: String!) {
+    unfavoriteAlbum(listenerId: $listenerId, albumId: $albumId) {
+      _id
+    }
+  }
+`;

@@ -81,3 +81,285 @@
 .muted {
   color: var(--muted);
 }
+
+.page--wide {
+  max-width: none;
+}
+
+.page-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.page-title {
+  margin: 0 0 0.25rem;
+  font-size: 1.65rem;
+}
+
+.page-lead {
+  margin: 0;
+  max-width: 36rem;
+}
+
+.panel {
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1rem 1.1rem;
+  margin-bottom: 1.25rem;
+  background: #faf8f5;
+}
+
+.filters-panel .filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.filters-panel .filter-row--dates {
+  padding-top: 0.5rem;
+  border-top: 1px dashed var(--border);
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 0.9rem;
+}
+
+.field span {
+  color: var(--muted);
+}
+
+.field input {
+  min-width: 12rem;
+  padding: 0.35rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  background: #fff;
+}
+
+.field--inline {
+  min-width: 10rem;
+}
+
+.filter-hint {
+  margin: 0 0 0.35rem;
+  color: #9a3412;
+  font-size: 0.9rem;
+}
+
+.filter-caption {
+  margin: 0;
+  font-size: 0.85rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: 4px;
+  border: 1px solid transparent;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.btn--primary {
+  background: var(--accent);
+  color: #fff;
+  border-color: #92400e;
+}
+
+.btn--primary:hover:not(:disabled) {
+  background: #c2410c;
+}
+
+.btn--secondary {
+  background: #fff;
+  border-color: var(--border);
+  color: var(--text);
+}
+
+.btn--secondary:hover:not(:disabled) {
+  background: #f5f5f4;
+}
+
+.btn--ghost {
+  background: transparent;
+  border-color: transparent;
+  color: var(--muted);
+}
+
+.btn--ghost:hover:not(:disabled) {
+  color: var(--text);
+  background: rgb(28 25 23 / 0.05);
+}
+
+.btn--danger {
+  color: #991b1b;
+}
+
+.btn--danger:hover:not(:disabled) {
+  background: #fef2f2;
+}
+
+.btn--small {
+  padding: 0.2rem 0.5rem;
+  font-size: 0.82rem;
+}
+
+.banner {
+  padding: 0.65rem 0.85rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+  font-size: 0.92rem;
+}
+
+.banner--error {
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  color: #7f1d1d;
+}
+
+.list-meta {
+  margin: 0 0 0.75rem;
+  font-size: 0.92rem;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #fff;
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+
+.data-table th,
+.data-table td {
+  padding: 0.55rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+
+.data-table th {
+  background: #f5f5f4;
+  font-weight: 600;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+
+.data-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.data-table .num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.data-table .actions {
+  white-space: nowrap;
+  text-align: right;
+}
+
+.data-table .actions .btn + .btn {
+  margin-left: 0.35rem;
+}
+
+.table-link {
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.table-link:hover {
+  color: var(--accent);
+}
+
+.modal-root {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 2rem 1rem;
+  background: rgb(28 25 23 / 0.45);
+}
+
+.modal-panel {
+  width: 100%;
+  max-width: 26rem;
+  background: var(--surface);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  box-shadow: 0 12px 40px rgb(0 0 0 / 0.12);
+  outline: none;
+}
+
+.modal-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.modal-title {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.modal-body {
+  padding: 1rem;
+}
+
+.stack-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.stack-form .field input {
+  min-width: 0;
+  width: 100%;
+}
+
+.form-error {
+  margin: 0;
+  padding: 0.5rem 0.6rem;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 4px;
+  color: #7f1d1d;
+  font-size: 0.88rem;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  margin-top: 0.35rem;
+}

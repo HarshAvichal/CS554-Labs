@@ -342,9 +342,15 @@
   gap: 0.65rem;
 }
 
-.stack-form .field input {
+.stack-form .field input,
+.stack-form .field select {
   min-width: 0;
   width: 100%;
+}
+
+.stack-form .form-hint {
+  margin: -0.25rem 0 0;
+  font-size: 0.85rem;
 }
 
 .form-error {

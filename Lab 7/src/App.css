@@ -403,6 +403,16 @@
   font-size: 1.05rem;
 }
 
+.subsection-lead {
+  margin: 0 0 0.65rem;
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+
+.subsection-lead code {
+  font-size: 0.9em;
+}
+
 .detail-dl {
   display: grid;
   gap: 0.65rem 1.5rem;

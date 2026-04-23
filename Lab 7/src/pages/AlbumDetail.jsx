@@ -190,6 +190,18 @@ export default function AlbumDetail() {
             <h2 className="subsection-title">Details</h2>
             <dl className="detail-dl">
               <div>
+                <dt>Title</dt>
+                <dd>{album.title || '—'}</dd>
+              </div>
+              <div>
+                <dt>Genre</dt>
+                <dd>{album.genre || '—'}</dd>
+              </div>
+              <div>
+                <dt>Track count</dt>
+                <dd>{album.track_count ?? '—'}</dd>
+              </div>
+              <div>
                 <dt>Artist</dt>
                 <dd>
                   {album.artist?._id ? (
@@ -213,7 +225,7 @@ export default function AlbumDetail() {
               </div>
               <div>
                 <dt>
-                  Listeners who favorited <span className="computed-tag">computed</span>
+                  numOfListenersWhoFavorited <span className="computed-tag">computed</span>
                 </dt>
                 <dd>
                   <strong>{album.numOfListenersWhoFavorited ?? '—'}</strong>
@@ -223,7 +235,10 @@ export default function AlbumDetail() {
           </section>
 
           <section className="panel detail-panel">
-            <h2 className="subsection-title">Listeners (album relationship)</h2>
+            <h2 className="subsection-title">Listeners from the Album type</h2>
+            <p className="muted subsection-lead">
+              Relationship field <code>listenersWhoFavorited</code> on <code>Album</code>.
+            </p>
             <ListenerList
               listeners={fromField}
               emptyLabel="No listeners have favorited this album."
@@ -231,7 +246,8 @@ export default function AlbumDetail() {
           </section>
 
           <section className="panel detail-panel">
-            <h2 className="subsection-title">Listeners (getListenersByAlbumId)</h2>
+            <h2 className="subsection-title">Listeners from getListenersByAlbumId</h2>
+            <p className="muted subsection-lead">Separate query required by the lab.</p>
             {listenersQ.error ? (
               <p className="form-error" role="alert">
                 {formatGraphQLError(listenersQ.error)}

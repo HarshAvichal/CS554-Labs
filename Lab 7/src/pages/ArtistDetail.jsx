@@ -158,6 +158,18 @@ export default function ArtistDetail() {
             <h2 className="subsection-title">Profile</h2>
             <dl className="detail-dl">
               <div>
+                <dt>Stage name</dt>
+                <dd>{artist.stage_name || '—'}</dd>
+              </div>
+              <div>
+                <dt>Genre</dt>
+                <dd>{artist.genre || '—'}</dd>
+              </div>
+              <div>
+                <dt>Label</dt>
+                <dd>{artist.label || '—'}</dd>
+              </div>
+              <div>
                 <dt>Management email</dt>
                 <dd>{artist.management_email || '—'}</dd>
               </div>
@@ -175,7 +187,7 @@ export default function ArtistDetail() {
               </div>
               <div>
                 <dt>
-                  Album count <span className="computed-tag">computed</span>
+                  numOfAlbums <span className="computed-tag">computed</span>
                 </dt>
                 <dd>
                   <strong>{artist.numOfAlbums ?? '—'}</strong>
@@ -185,12 +197,16 @@ export default function ArtistDetail() {
           </section>
 
           <section className="panel detail-panel">
-            <h2 className="subsection-title">Albums (artist relationship)</h2>
+            <h2 className="subsection-title">Albums from the Artist type</h2>
+            <p className="muted subsection-lead">
+              Relationship field <code>albums</code> on <code>Artist</code>.
+            </p>
             <AlbumList albums={fromField} />
           </section>
 
           <section className="panel detail-panel">
-            <h2 className="subsection-title">Albums (getAlbumsByArtistId)</h2>
+            <h2 className="subsection-title">Albums from getAlbumsByArtistId</h2>
+            <p className="muted subsection-lead">Separate query required by the lab.</p>
             {albumsQ.error ? (
               <p className="form-error" role="alert">
                 {formatGraphQLError(albumsQ.error)}

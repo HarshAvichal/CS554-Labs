@@ -249,6 +249,14 @@ export default function ListenerDetail() {
             <h2 className="subsection-title">Profile</h2>
             <dl className="detail-dl">
               <div>
+                <dt>First name</dt>
+                <dd>{listener.first_name || '—'}</dd>
+              </div>
+              <div>
+                <dt>Last name</dt>
+                <dd>{listener.last_name || '—'}</dd>
+              </div>
+              <div>
                 <dt>Email</dt>
                 <dd>{listener.email || '—'}</dd>
               </div>
@@ -262,7 +270,7 @@ export default function ListenerDetail() {
               </div>
               <div>
                 <dt>
-                  Favorite album count <span className="computed-tag">computed</span>
+                  numOfFavoriteAlbums <span className="computed-tag">computed</span>
                 </dt>
                 <dd>
                   <strong>{listener.numOfFavoriteAlbums ?? '—'}</strong>
@@ -273,6 +281,9 @@ export default function ListenerDetail() {
 
           <section className="panel detail-panel">
             <h2 className="subsection-title">Favorite albums</h2>
+            <p className="muted subsection-lead">
+              Relationship field <code>favorite_albums</code> on <code>Listener</code>.
+            </p>
             <FavoriteAlbumsList albums={listener.favorite_albums} />
           </section>
         </>

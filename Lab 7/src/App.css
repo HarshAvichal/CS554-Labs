@@ -403,15 +403,6 @@
   font-size: 1.05rem;
 }
 
-.subsection-note {
-  margin: 0 0 0.65rem;
-  font-size: 0.82rem;
-}
-
-.subsection-note code {
-  font-size: 0.85em;
-}
-
 .detail-dl {
   display: grid;
   gap: 0.65rem 1.5rem;

@@ -5,8 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server: {
-    // Dev-only: browser calls same origin (5173), Vite forwards to Lab 3 (4000).
-    // Avoids CORS; you still must run `npm start` in Lab 3.
+    // Proxies /lab3graphql → Lab 3 on :4000 (same-origin in dev; run Lab 3 separately).
     proxy: {
       '/lab3graphql': {
         target: 'http://127.0.0.1:4000',

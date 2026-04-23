@@ -81,9 +81,7 @@ export default function ListenerForm({
           <option value="PREMIUM">PREMIUM</option>
         </select>
       </label>
-      <p className="muted form-hint">
-        Age must be between 13 and 120 (computed from date of birth on the server).
-      </p>
+      <p className="muted form-hint">Date of birth must yield age 13–120 (enforced by the server).</p>
       <div className="form-actions">
         <button type="button" className="btn btn--ghost" onClick={onCancel}>
           Cancel

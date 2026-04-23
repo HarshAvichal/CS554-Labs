@@ -1,7 +1,7 @@
 import { ApolloClient, InMemoryCache } from '@apollo/client';
 import { HttpLink } from '@apollo/client/link/http';
 
-/** In dev, prefer Vite proxy (see vite.config.js) unless VITE_GRAPHQL_URL is set. */
+/** Dev: Vite proxy unless `VITE_GRAPHQL_URL` is set. Production: direct URL below. */
 function graphqlHttpUri() {
   if (import.meta.env.VITE_GRAPHQL_URL) {
     return import.meta.env.VITE_GRAPHQL_URL;

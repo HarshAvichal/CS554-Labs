@@ -266,7 +266,6 @@ export default function ListenerDetail() {
                 </dt>
                 <dd>
                   <strong>{listener.numOfFavoriteAlbums ?? '—'}</strong>
-                  <span className="muted"> (numOfFavoriteAlbums)</span>
                 </dd>
               </div>
             </dl>
@@ -274,9 +273,6 @@ export default function ListenerDetail() {
 
           <section className="panel detail-panel">
             <h2 className="subsection-title">Favorite albums</h2>
-            <p className="muted subsection-note">
-              Resolver: <code>Listener.favorite_albums</code>
-            </p>
             <FavoriteAlbumsList albums={listener.favorite_albums} />
           </section>
         </>

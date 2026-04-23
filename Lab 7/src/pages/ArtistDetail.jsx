@@ -179,21 +179,18 @@ export default function ArtistDetail() {
                 </dt>
                 <dd>
                   <strong>{artist.numOfAlbums ?? '—'}</strong>
-                  <span className="muted"> (numOfAlbums)</span>
                 </dd>
               </div>
             </dl>
           </section>
 
           <section className="panel detail-panel">
-            <h2 className="subsection-title">Albums from artist field</h2>
-            <p className="muted subsection-note">Resolver: <code>Artist.albums</code></p>
+            <h2 className="subsection-title">Albums (artist relationship)</h2>
             <AlbumList albums={fromField} />
           </section>
 
           <section className="panel detail-panel">
-            <h2 className="subsection-title">Albums from getAlbumsByArtistId</h2>
-            <p className="muted subsection-note">Query: <code>getAlbumsByArtistId</code></p>
+            <h2 className="subsection-title">Albums (getAlbumsByArtistId)</h2>
             {albumsQ.error ? (
               <p className="form-error" role="alert">
                 {formatGraphQLError(albumsQ.error)}

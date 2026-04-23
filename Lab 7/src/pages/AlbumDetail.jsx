@@ -217,17 +217,13 @@ export default function AlbumDetail() {
                 </dt>
                 <dd>
                   <strong>{album.numOfListenersWhoFavorited ?? '—'}</strong>
-                  <span className="muted"> (numOfListenersWhoFavorited)</span>
                 </dd>
               </div>
             </dl>
           </section>
 
           <section className="panel detail-panel">
-            <h2 className="subsection-title">Listeners from album field</h2>
-            <p className="muted subsection-note">
-              Resolver: <code>Album.listenersWhoFavorited</code>
-            </p>
+            <h2 className="subsection-title">Listeners (album relationship)</h2>
             <ListenerList
               listeners={fromField}
               emptyLabel="No listeners have favorited this album."
@@ -235,10 +231,7 @@ export default function AlbumDetail() {
           </section>
 
           <section className="panel detail-panel">
-            <h2 className="subsection-title">Listeners from getListenersByAlbumId</h2>
-            <p className="muted subsection-note">
-              Query: <code>getListenersByAlbumId</code>
-            </p>
+            <h2 className="subsection-title">Listeners (getListenersByAlbumId)</h2>
             {listenersQ.error ? (
               <p className="form-error" role="alert">
                 {formatGraphQLError(listenersQ.error)}
